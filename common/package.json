@@ -1,6 +1,6 @@
 {
   "name": "@muzman/common",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "micro service auth",
   "main": "./build/index.js",
   "files": [
@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "del ./build/*",
     "build": "tsc",
-    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish"
+    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish --access public"
   },
   "keywords": [],
   "author": "",
