@@ -1,12 +1,30 @@
 {
-  "name": "@muzmanservices/common",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@muzman/common",
+  "version": "0.0.1",
+  "description": "micro service auth",
+  "main": "./build/index.js",
+  "files": [
+    "build/**/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "del ./build/*",
+    "build": "npm run clean && tsc",
+    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "del-cli": "^5.0.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@types/cookie-session": "^2.0.44",
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
+    "cookie-session": "^2.0.0",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.1"
+  }
 }
