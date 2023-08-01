@@ -1,0 +1,5 @@
+{
+  "yaml.schemas": {
+    "kubernetes://schema/v1%40service": "file:///Users/muzman/Desktop/muzman/microservis/microservis-ticket/infra/k8s/nats-depl.yaml"
+  }
+}
