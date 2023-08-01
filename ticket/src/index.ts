@@ -30,10 +30,10 @@ app.use(
 // routers users routes
 app.use(testRouter);
 
-// app.use(createTicketRouter);
-// app.use(showTicketRouter);
-// app.use(indexTicketRouter);
-// app.use(updateTicketRouter);
+app.use(createTicketRouter);
+app.use(showTicketRouter);
+app.use(indexTicketRouter);
+app.use(updateTicketRouter);
 // error handler
 app.use(errorHandler);
 app.all("*", async (req, res) => {
@@ -48,8 +48,21 @@ const start = async () => {
     throw new Error("JWT_KEY not set");
   }
 
+  if (!process.env.NATS_CLIENT_ID) {
+    throw new Error("NATS Cliend ID yok");
+  }
+  if (!process.env.NATS_URL) {
+    throw new Error("NATS URL yok");
+  }
+  if (!process.env.NATS_CLUSTER_ID) {
+    throw new Error("NATS NATS_CLUSTER_ID yok");
+  }
   try {
-    await natsWrapper.connect("ticketing", "alsdkj", "http://nats-srv:4222");
+    await natsWrapper.connect(
+      process.env.NATS_CLUSTER_ID,
+      process.env.NATS_CLIENT_ID,
+      process.env.NATS_URL
+    );
     natsWrapper.client.on("close", () => {
       console.log("NATS connection closed!");
       process.exit();
